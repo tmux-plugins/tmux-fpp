@@ -2,6 +2,12 @@
 
 Plugin wrapper around [Facebook PathPicker](http://facebook.github.io/PathPicker/).
 
+Quickly open any path on your temrinal window in your `$EDITOR` of choice!
+
+### Demo
+
+[![Demo tmux-fpp](http://g.recordit.co/MhLPNgOKyN.gif)](http://recordit.co/MhLPNgOKyN)
+
 ### Dependencies
 
 - `fpp` - Facebook PathPicker.
@@ -53,6 +59,8 @@ Put `set -g @fpp-key 'x'` in `tmux.conf`.
 
 `tmux-open` works great with:
 
+- [tmux-urlview](https://github.com/jbnicolai/tmux-urlview) - a plugin for
+  quickly opening any url on your terminal window
 - [tmux-copycat](https://github.com/tmux-plugins/tmux-copycat) - a plugin for
   regex searches in tmux and fast match selection
 - [tmux-yank](https://github.com/tmux-plugins/tmux-yank) - enables copying
