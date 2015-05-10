@@ -13,7 +13,7 @@ get_tmux_option() {
 
 readonly key="$(get_tmux_option "@fpp-key" "f")"
 
-bind-key "$key" capture-pane \\\; \
+tmux bind-key "$key" capture-pane \\\; \
     save-buffer /tmp/tmux-buffer \\\; \
     new-window -c "#{pane_current_path}" "cat /tmp/tmux-buffer | fpp && rm /tmp/tmux-buffer"
 
