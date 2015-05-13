@@ -16,7 +16,7 @@ Quickly open any path on your temrinal window in your `$EDITOR` of choice!
 
 In any tmux mode:
 
-- `i` - "inspect" for a new window with a Facebook PathPicker selection of your tty.
+- `f` - "fpp" for a new window with a Facebook PathPicker selection of your tty.
 
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
@@ -35,7 +35,7 @@ use the plugin.
 
 Clone the repo:
 
-    $ git clone https://github.com/jbnicolai/tmux-fpp ~/clone/path
+    $ git clone https://github.com/tmux-plugins/tmux-fpp ~/clone/path
 
 Add this line to the bottom of `.tmux.conf`:
 
@@ -50,14 +50,14 @@ You should now be able to use the plugin.
 
 ### Configuration
 
-> How can I change the default "i" key binding to something else? For example,
+> How can I change the default "f" key binding to something else? For example,
 > key "x"?
 
 Put `set -g @fpp-key 'x'` in `tmux.conf`.
 
 ### Other goodies
 
-`tmux-open` works great with:
+`tmux-fpp` works great with:
 
 - [tmux-urlview](https://github.com/jbnicolai/tmux-urlview) - a plugin for
   quickly opening any url on your terminal window
