@@ -2,7 +2,7 @@
 
 Plugin wrapper around [Facebook PathPicker](http://facebook.github.io/PathPicker/).
 
-Quickly open any path on your temrinal window in your `$EDITOR` of choice!
+Quickly open any path on your terminal window in your `$EDITOR` of choice!
 
 ### Demo
 
