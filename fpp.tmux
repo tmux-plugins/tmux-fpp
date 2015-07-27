@@ -11,9 +11,10 @@ get_tmux_option() {
   fi
 }
 
+readonly fpp_path="$(get_tmux_option "@fpp-path" "fpp")"
 readonly key="$(get_tmux_option "@fpp-key" "f")"
 
 tmux bind-key "$key" capture-pane \\\; \
     save-buffer /tmp/tmux-buffer \\\; \
-    new-window -c "#{pane_current_path}" "sh -c 'cat /tmp/tmux-buffer | fpp && rm /tmp/tmux-buffer'"
+    new-window -c "#{pane_current_path}" "sh -c 'cat /tmp/tmux-buffer | ${fpp_path} && rm /tmp/tmux-buffer'"
 
