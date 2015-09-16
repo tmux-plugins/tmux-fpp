@@ -36,7 +36,7 @@ Clone the repo:
 
 Add this line to the bottom of `.tmux.conf`:
 
-    run-shell ~/clone/path/open.tmux
+    run-shell ~/clone/path/fpp.tmux
 
 Reload TMUX environment:
 
