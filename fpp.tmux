@@ -15,5 +15,6 @@ readonly key="$(get_tmux_option "@fpp-key" "f")"
 
 tmux bind-key "$key" capture-pane \\\; \
     save-buffer /tmp/tmux-buffer \\\; \
+    delete-buffer \\\; \
     new-window -c "#{pane_current_path}" "sh -c 'cat /tmp/tmux-buffer | fpp && rm /tmp/tmux-buffer'"
 
