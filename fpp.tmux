@@ -9,7 +9,9 @@ get_tmux_option() {
 
 readonly key="$(get_tmux_option "@fpp-key" "f")"
 
+readonly tmpfile="${TMPDIR:-/tmp}/tmux-buffer"
+
 tmux bind-key "$key" capture-pane -J \\\; \
-    save-buffer "${TMPDIR:-/tmp}/tmux-buffer" \\\; \
+    save-buffer "${tmpfile}" \\\; \
     delete-buffer \\\; \
-    new-window -n fpp -c "#{pane_current_path}" "cat '${TMPDIR:-/tmp}/tmux-buffer' | fpp ; rm '${TMPDIR:-/tmp}/tmux-buffer'"
+    new-window -n fpp -c "#{pane_current_path}" "cat '${tmpfile}' | fpp ; rm '${tmpfile}'"
