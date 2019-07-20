@@ -52,6 +52,24 @@ You should now be able to use the plugin.
 
 Put `set -g @fpp-key 'x'` in `tmux.conf`.
 
+> How can I paste the selected file paths into my original pane, instead of
+> launching an editor?
+
+Put `set -g @fpp-mode 'paste'` in `tmux.conf`.
+
+Alternatively you can bind both behaviours to different keys manually:
+
+```sh
+# Disable default binding
+set -g @fpp-bind off
+
+# Bind 'f' to run FPP launching an editor
+bind-key f run-shell '~/.tmux/plugins/tmux-fpp start edit'
+
+# Bind 'x' to run FPP and paste the list of files in the initial pane
+bind-key x run-shell '~/.tmux/plugins/tmux-fpp start paste'
+```
+
 ### Other goodies
 
 `tmux-fpp` works great with:
