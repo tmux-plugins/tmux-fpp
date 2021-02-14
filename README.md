@@ -23,7 +23,7 @@ In any tmux mode:
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
-    set -g @plugin 'jbnicolai/tmux-fpp'
+    set -g @plugin 'tmux-plugins/tmux-fpp'
 
 Hit `prefix + I` to fetch the plugin and source it. You should now be able to
 use the plugin.
