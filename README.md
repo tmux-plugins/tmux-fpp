@@ -67,6 +67,10 @@ bind-key f run-shell '~/.tmux/plugins/tmux-fpp start edit'
 bind-key x run-shell '~/.tmux/plugins/tmux-fpp start paste'
 ```
 
+> How can I specify custom path to fpp?
+
+Put `set -g @fpp-path '~/my/path/fpp'` in `tmux.conf`.
+
 ### Other goodies
 
 `tmux-fpp` works great with:
