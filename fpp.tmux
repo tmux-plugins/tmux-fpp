@@ -11,7 +11,10 @@ set -Eeu -o pipefail
 #   @fpp-mode edit/paste
 #     - Whether to launch EDITOR after FPP, or paste the file list into the
 #       invoking pane.
-#     - Defaults to 'edit'
+#     - Defaults to 'edit'.
+#   @fpp-path
+#     - Custom path to FPP.
+#     - Default to 'fpp'.
 #
 # This script has several entry points. With no arguments, it defaults to 'init'.
 # The entrypoints are defined by functions prefixed with `tmux_fpp_…`:
@@ -58,7 +61,19 @@ tmux_fpp_init() {
 
 # Save the buffer contents and create a new window for running FPP.
 tmux_fpp_start() {
-  local mode target_pane_id mode tmpfile
+  local fpp_path mode target_pane_id mode tmpfile
+
+  # @fpp-path determines path to FPP.
+  # Defaults to 'fpp'.
+  fpp_path="$(tmux show-option -gqv @fpp-path)" || true
+  : "${fpp_path:=fpp}"
+
+  # Display error if fpp is not found.
+  if ! command -v "${fpp_path}" &> /dev/null; then
+      tmux display-message "tmux-fpp: fpp is not found"
+      # Intentionally not returning non zero here to exit gracefully.
+      return
+  fi
 
   # Remember the invocation mode
   mode="${1}"
@@ -82,7 +97,8 @@ tmux_fpp_start() {
     new-window \
       -n fpp \
       -c '#{pane_current_path}' \
-      "${BASH_SOURCE[0]}" internal_run "${mode}" "${target_pane_id}" "${tmpfile}" \
+      "${BASH_SOURCE[0]}" internal_run \
+      "${mode}" "${target_pane_id}" "${tmpfile}" "${fpp_path}" \
       ;
 
   # If we made it here, the new window (tmux_fpp_internal_run) will handle cleanup.
@@ -95,13 +111,14 @@ tmux_fpp_internal_run() {
   mode="${1}"
   target_pane_id="${2}"
   tmpfile="${3}"
+  fpp_path="${4}"
 
   # Clean up the temp file at the end, no matter what.
   trap 'rm -f "${tmpfile}"' ERR RETURN
 
   # Construct the command arguments for running fpp.
   local fpp_cmd
-  fpp_cmd=(fpp)
+  fpp_cmd=($fpp_path)
   case "${mode}" in
     paste)
       # In 'paste' mode, we execute tmux_fpp_finish_paste with the file list.
