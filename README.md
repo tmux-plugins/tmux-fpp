@@ -14,10 +14,7 @@ Quickly open any path on your terminal window in your `$EDITOR` of choice!
 
 ### Key bindings
 
-In any tmux mode:
-
-- `f` - "fpp" for a new window with a Facebook PathPicker selection of your tty.
-
+- `prefix + f` - open a new window with a fpp selection of your current tmux pane.
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
