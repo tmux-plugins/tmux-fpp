@@ -56,7 +56,7 @@ tmux_fpp_init() {
   mode="$(tmux show-option -gqv @fpp-mode)" || true
   : "${mode:=edit}"
 
-  tmux bind-key "${key}" run-shell "$(printf '%q start %q' "${BASH_SOURCE[0]}" "${mode}")"
+  tmux bind-key -N "Facebook Path Picker" "${key}" run-shell "$(printf '%q start %q' "${BASH_SOURCE[0]}" "${mode}")"
 }
 
 # Save the buffer contents and create a new window for running FPP.
