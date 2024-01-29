@@ -61,10 +61,10 @@ Alternatively you can bind both behaviours to different keys manually:
 set -g @fpp-bind off
 
 # Bind 'f' to run FPP launching an editor
-bind-key f run-shell '~/.tmux/plugins/tmux-fpp start edit'
+bind-key f run-shell '~/.tmux/plugins/tmux-fpp/fpp.tmux start edit'
 
 # Bind 'x' to run FPP and paste the list of files in the initial pane
-bind-key x run-shell '~/.tmux/plugins/tmux-fpp start paste'
+bind-key x run-shell '~/.tmux/plugins/tmux-fpp/fpp.tmux start paste'
 ```
 
 > How can I specify custom path to fpp?
